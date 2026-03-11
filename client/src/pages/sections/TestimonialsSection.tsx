@@ -36,21 +36,21 @@ export const TestimonialsSection = (): JSX.Element => {
       />
 
       {/* Main content container */}
-      <div className="relative w-full px-[124px] pt-[490px] pb-[160px] flex flex-col gap-0">
+      <div className="relative w-full px-[124px] pt-[100px] pb-[160px] flex flex-col gap-0">
         {/* Section heading */}
-        <h2 className="[font-family:'Days-Regular',Helvetica] font-normal text-black text-4xl tracking-[0] leading-[34px] mb-[100px]">
+        <h2 className="[font-family:'Days-Regular',Helvetica] font-normal text-black text-4xl tracking-[0] leading-[34px] mb-[48px]">
           Відгуки <br />
           Батьків та учнів
         </h2>
 
         {/* Section subtitle */}
-        <p className="[font-family:'Inter',Helvetica] font-medium text-black text-2xl tracking-[0] leading-[26px] max-w-[819px] mb-[94px]">
+        <p className="[font-family:'Inter',Helvetica] font-medium text-black text-2xl tracking-[0] leading-[26px] max-w-[819px] mb-[64px]">
           Курси допомагають освоїти роботу з комп&#39;ютером, програмування та
           розробку ігор, а ще розвинути аналітичне та логічне мислення
         </p>
 
         {/* Testimonial cards row */}
-        <div className="flex flex-row gap-[56px] w-full mb-[100px]">
+        <div className="flex flex-row gap-[56px] w-full mb-[80px]">
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
@@ -64,7 +64,7 @@ export const TestimonialsSection = (): JSX.Element => {
                 {/* Star rating image */}
                 <img
                   className="self-stretch w-full flex-shrink-0"
-                  alt="Frame"
+                  alt="Stars"
                   src="/figmaAssets/frame-36.svg"
                 />
 
@@ -87,7 +87,7 @@ export const TestimonialsSection = (): JSX.Element => {
         {/* "Детальніше" button centered */}
         <div className="flex justify-center w-full mb-[50px]">
           <Button
-            className="h-auto w-[398px] gap-[13.81px] px-[33.14px] py-[33.14px] rounded-[100px] border-[3px] border-solid border-[#eb6906] bg-[linear-gradient(0deg,rgba(255,255,255,0.9)_0%,rgba(255,255,255,0.9)_100%)] hover:bg-[rgba(255,255,255,0.95)] flex items-center justify-center"
+            className="h-auto w-[398px] gap-[13.81px] px-[33.14px] py-[33.14px] rounded-[100px] border-[3px] border-solid border-[#eb6906] hover:bg-[rgba(255,255,255,0.95)] flex items-center justify-center"
             style={{
               background: `url(/figmaAssets/frame-3-5.png) 50% 50% / cover, linear-gradient(0deg,rgba(255,255,255,0.9) 0%,rgba(255,255,255,0.9) 100%)`,
             }}
@@ -110,7 +110,7 @@ export const TestimonialsSection = (): JSX.Element => {
         src="/figmaAssets/rectangle-7.png"
       />
 
-      {/* Bottom wave rectangle */}
+      {/* Bottom wave */}
       <img
         className="w-full pointer-events-none"
         alt="Rectangle"
