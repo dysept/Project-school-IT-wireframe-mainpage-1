@@ -1,126 +1,87 @@
 const menuItems = [
-  { label: "Школа", hasDropdown: false },
-  { label: "Програма навчання", hasDropdown: true },
-  { label: "Викладачі", hasDropdown: false },
-  { label: "Вартість", hasDropdown: false },
-  { label: "Контакти", hasDropdown: true },
+  { label: "Школа", id: "home" },
+  { label: "Програма навчання", id: "programs" },
+  { label: "Викладачі", id: "instructors" },
+  { label: "Вартість", id: "pricing" },
+  { label: "Контакти", id: "contacts" },
 ];
 
 const contactItems = [
-  {
-    icon: "/figmaAssets/icon-mobile.svg",
-    alt: "Icon mobile",
-    text: "+38(067) 676-67-67",
-  },
-  {
-    icon: "/figmaAssets/icon-email-outline.svg",
-    alt: "Icon email outline",
-    text: "kidscopeacademy@gmail.com",
-  },
-  {
-    icon: "/figmaAssets/icon-location-line.svg",
-    alt: "Icon location line",
-    text: "с.Зимна Вода, вул.Івана Сірка,75",
-  },
+  { icon: "/figmaAssets/icon-mobile.svg", alt: "Phone", text: "+38(067) 676-67-67" },
+  { icon: "/figmaAssets/icon-email-outline.svg", alt: "Email", text: "kidscopeacademy@gmail.com" },
+  { icon: "/figmaAssets/icon-location-line.svg", alt: "Location", text: "с.Зимна Вода, вул.Івана Сірка,75" },
 ];
 
 export const FooterSection = (): JSX.Element => {
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <footer className="w-full bg-transparent pt-10 pb-10">
-      {/* Three-column layout */}
-      <div className="w-full px-[62px] flex flex-row justify-between items-start gap-4">
-        {/* Left column - Contacts */}
-        <div className="flex flex-col items-start gap-0 min-w-[260px]">
-          <h3 className="[font-family:'Days-Regular',Helvetica] font-normal text-[#fffffd] text-[32px] tracking-[0] leading-[27.5px] whitespace-nowrap mb-6">
+    <footer id="contacts" className="w-full bg-transparent pt-10 pb-10">
+      {/* Three-column layout → stacks on mobile */}
+      <div className="w-full px-5 lg:px-[62px] flex flex-col lg:flex-row justify-between items-start gap-10 lg:gap-4">
+
+        {/* Contacts */}
+        <div className="flex flex-col items-start">
+          <h3 className="[font-family:'Days-Regular',Helvetica] font-normal text-[#fffffd] text-[28px] lg:text-[32px] leading-tight mb-4">
             контакти
           </h3>
-          <div className="flex flex-col items-start gap-7 mt-4">
-            {contactItems.map((item, index) => (
-              <div
-                key={index}
-                className="inline-flex items-center gap-1 relative flex-[0_0_auto]"
-              >
-                <img
-                  className="relative w-[30px] h-[30px]"
-                  alt={item.alt}
-                  src={item.icon}
-                />
-                <span className="relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#fffffd] text-xl tracking-[0] leading-[27.5px] whitespace-nowrap">
+          <div className="flex flex-col items-start gap-5 mt-2">
+            {contactItems.map((item, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <img className="w-[26px] h-[26px] lg:w-[30px] lg:h-[30px]" alt={item.alt} src={item.icon} />
+                <span className="[font-family:'Inter',Helvetica] font-medium text-[#fffffd] text-base lg:text-xl leading-snug">
                   {item.text}
                 </span>
               </div>
             ))}
           </div>
-          {/* Privacy policy */}
-          <div className="mt-8 w-[306px] [font-family:'Inter',Helvetica] font-medium text-[#b0c1c199] text-[19.9px] tracking-[0] leading-[27.5px]">
+          <div className="mt-6 [font-family:'Inter',Helvetica] font-medium text-[#b0c1c199] text-sm lg:text-[19.9px] leading-snug">
             ПРАВИЛА КОНФІДЕНЦІЙНОСТІ
           </div>
         </div>
 
-        {/* Center column - Menu */}
-        <div className="flex flex-col items-center gap-0">
-          <h3 className="[font-family:'Days-Regular',Helvetica] font-normal text-[#ed6905] text-[32px] tracking-[0] leading-[27.5px] whitespace-nowrap mb-4">
+        {/* Menu */}
+        <div className="flex flex-col items-start lg:items-center">
+          <h3 className="[font-family:'Days-Regular',Helvetica] font-normal text-[#ed6905] text-[28px] lg:text-[32px] leading-tight mb-4">
             меню
           </h3>
-          <div className="flex flex-col items-center justify-center mt-2">
-            {menuItems.map((item, index) => (
-              <div
-                key={index}
-                className="inline-flex items-center justify-center gap-2.5 px-0 py-2.5 relative flex-[0_0_auto] -mt-2 first:mt-0 cursor-pointer"
+          <div className="flex flex-col items-start lg:items-center gap-1 mt-1">
+            {menuItems.map((item, i) => (
+              <button
+                key={i}
+                onClick={() => scrollTo(item.id)}
+                className="py-2 bg-transparent border-none cursor-pointer"
               >
-                <div className="inline-flex items-center gap-1 relative flex-[0_0_auto]">
-                  <span className="relative w-fit [font-family:'Montserrat',Helvetica] font-bold text-[#fffffd] text-xl tracking-[0] leading-[normal] whitespace-nowrap">
-                    {item.label}
-                  </span>
-                  {item.hasDropdown && (
-                    <img
-                      className="relative w-[30px] h-[30px]"
-                      alt="Mingcute down line"
-                      src="/figmaAssets/mingcute-down-line.svg"
-                    />
-                  )}
-                </div>
-              </div>
+                <span className="[font-family:'Montserrat',Helvetica] font-bold text-[#fffffd] text-base lg:text-xl whitespace-nowrap">
+                  {item.label}
+                </span>
+              </button>
             ))}
           </div>
         </div>
 
-        {/* Right column - Social networks */}
-        <div className="flex flex-col items-end gap-0 min-w-[260px]">
-          <h3 className="[font-family:'Days-Regular',Helvetica] font-normal text-[#feca00] text-[32px] tracking-[0] leading-[27.5px] whitespace-nowrap mb-6 self-end">
+        {/* Social */}
+        <div className="flex flex-col items-start lg:items-end">
+          <h3 className="[font-family:'Days-Regular',Helvetica] font-normal text-[#feca00] text-[28px] lg:text-[32px] leading-tight mb-4">
             соціальні мережі
           </h3>
-          {/* Social media icons */}
-          <img
-            className="w-[258px] h-[68px] mt-4"
-            alt="Social media icons"
-            src="/figmaAssets/social-media-icons.svg"
-          />
-          {/* Logo badge */}
-          <div className="relative w-[205px] h-14 bg-white rounded-[32.2px] border-2 border-solid border-[#eb6906] mt-6">
-            <img
-              className="absolute top-[9px] left-[35px] w-[162px] h-[35px]"
-              alt="Logog"
-              src="/figmaAssets/logog-1.png"
-            />
-            <img
-              className="absolute top-2 left-[5px] w-8 h-[39px]"
-              alt="Image"
-              src="/figmaAssets/image-1-1.png"
-            />
+          <img className="w-[220px] lg:w-[258px] h-auto mt-2" alt="Social media" src="/figmaAssets/social-media-icons.svg" />
+          <div className="relative w-[180px] lg:w-[205px] h-12 lg:h-14 bg-white rounded-[32.2px] border-2 border-solid border-[#eb6906] mt-5">
+            <img className="absolute top-[8px] left-[30px] w-[142px] lg:w-[162px] h-[28px] lg:h-[35px]" alt="Logo" src="/figmaAssets/logog-1.png" />
+            <img className="absolute top-1.5 left-[4px] w-7 lg:w-8 h-[34px] lg:h-[39px]" alt="Icon" src="/figmaAssets/image-1-1.png" />
           </div>
-          {/* All rights reserved */}
-          <div className="mt-6 [font-family:'Inter',Helvetica] font-medium text-[#b0c1c199] text-[19.9px] tracking-[0] leading-[27.5px] whitespace-nowrap">
+          <div className="mt-4 [font-family:'Inter',Helvetica] font-medium text-[#b0c1c199] text-sm lg:text-[19.9px] leading-snug">
             Всі права застережено, 2025
           </div>
         </div>
       </div>
 
-      {/* Bottom license text */}
+      {/* License text */}
       <div className="w-full flex justify-center mt-8 px-4">
-        <p className="w-[392px] [font-family:'Inter',Helvetica] font-medium text-[#b0c1c199] text-[19.9px] text-center tracking-[0] leading-[27.5px]">
-          Ліцензія на провадження освітньої діяльності у сфері позашкільної
-          освіти
+        <p className="max-w-[392px] [font-family:'Inter',Helvetica] font-medium text-[#b0c1c199] text-sm lg:text-[19.9px] text-center leading-snug">
+          Ліцензія на провадження освітньої діяльності у сфері позашкільної освіти
         </p>
       </div>
     </footer>
